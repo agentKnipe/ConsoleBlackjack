@@ -97,10 +97,10 @@ namespace FunBlackJack.BusinessObjects {
             var highScore = 0;
             foreach(var player in Players.Where(w => !w.IsBusted)) {
                 if((player.TotalValue > highScore && player.TotalValue <= 21) || (player.TotalValueAlt > highScore && player.TotalValueAlt <= 21)) {
-                    if(player.TotalValueAlt <= 21 && player.TotalValueAlt > player.TotalValue) {
+                    if(player.TotalValueAlt <= 21 && player.TotalValueAlt >= player.TotalValue) {
                         highScore = player.TotalValueAlt;
                     }
-                    else {
+                    else if(player.TotalValue <= 21) {
                         highScore = player.TotalValue;
                     }
                 }
